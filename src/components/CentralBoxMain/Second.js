@@ -49,7 +49,7 @@ margin-right: 1px;
     color: #E0E0E0 ;
     font-size: calc(0.7rem + 1vh);
     font-family: 'Karla', sans-serif ;
-    margin: 1% 7%;
+    margin: 1% 3%;
     padding: 0.5%;
 }
 `
