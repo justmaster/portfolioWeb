@@ -1,0 +1,154 @@
+:root {
+  --primary: #903583;
+  --secondary: #3183e7;
+  --dark: #212121;
+  --light: #f3f3f3;
+}
+
+.desc_container {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* font-family: "Cormorant Garamond", serif; */
+  font-family: "Raleway", sans-serif;
+  /* font-family: "Ubuntu Mono", monospace; */
+}
+
+.main_container {
+  margin: 2rem;
+}
+
+.desc {
+  color: white;
+  font-size: 25px;
+}
+
+.desc_name {
+  margin-top: 1%;
+  color: white;
+  font-size: 20px;
+}
+
+.card {
+  width: 210px;
+  height: 210px;
+  perspective: 1000px;
+  cursor: pointer;
+  z-index: 5;
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: scale(103%);
+  transition: 0.4s;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+  transform: rotateY(-180deg);
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* .card:hover ~ .card__inner {
+  transform: rotateY(180deg);
+} */
+
+.card__face {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 45px;
+  box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card__face--front {
+  background-image: url("");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__face--front h2 {
+  color: #fff;
+  font-size: 200vw;
+}
+
+.card__face--back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  transform: rotateY(180deg);
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom left,
+    var(--primary) 40%,
+    var(--secondary) 115%
+  );
+}
+
+.card__header:after {
+  content: "";
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  z-index: -1;
+  border-radius: 0px 0px 50% 0px;
+}
+
+.pp {
+  display: block;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 0px;
+  object-fit: cover;
+  opacity: 0.7;
+  transition: 0.4s;
+}
+
+.card__content:hover .pp {
+  opacity: 1;
+}
+
+@media screen and (max-width: 750px) {
+  .card {
+    margin: 12px auto 0;
+    margin-bottom: 8px;
+    width: 150px;
+    height: 150px;
+  }
+  .pp {
+    width: 50px;
+    height: 50px;
+  }
+}

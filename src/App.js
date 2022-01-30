@@ -11,8 +11,13 @@ import {Route, Switch} from "react-router"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
 import { AnimatePresence } from "framer-motion"
 import SoundBar from "./subComponents/SoundBar"
+import {gsap, DrawSVGPlugin, Flip} from 'gsap/all'
+import {useRef, useEffect} from 'react'
+gsap.registerPlugin(DrawSVGPlugin);
+gsap.registerPlugin(Flip);
 
 function App() {
+
   const location = useLocation();
   return <>
 

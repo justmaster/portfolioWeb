@@ -50,12 +50,10 @@ const FourthPageDiv = ({show})  => {
         <div>
                 <AnimatePresence>
                     {shouldRender && (
-                        <DarkDiv variants={diventer} initial='hidden'animate='animate' exit='exit'></DarkDiv> 
+                        <DarkDiv 
+                            variants={diventer} initial='hidden'animate='animate' exit='exit'
+                        ></DarkDiv> 
                     )}   
-                </AnimatePresence>
-
-                <AnimatePresence>
-                    {/* {show === "second" ? <LightParticle  /> : null} */}
                 </AnimatePresence>
         </div>
     )

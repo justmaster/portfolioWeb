@@ -18,6 +18,8 @@ import ThirdPageDiv from '../subComponents/SideBarDivs/ThirdPageDiv'
 import FourthPageDiv from '../subComponents/SideBarDivs/FourthPageDiv'
 import Navbar from './navbar/Navbar'
 
+import { DrawSVGPlugin, gsap} from 'gsap/all'
+
 
 
 const MainContainer = styled(motion.div)`
@@ -25,6 +27,9 @@ background: ${props => props.theme.body};
 width: 100vw;
 height: 100vh;
 position: relative;
+overflow-x: hidden;
+display: flex;
+flex-direction: column;
 
 h2,h3,h4,h5,h6{
     font-family: 'Karla', sans-serif ;
@@ -34,6 +39,7 @@ h2,h3,h4,h5,h6{
 
 const Container = styled.div`
 padding: 2rem;
+overflow-x: hidden;
 `
 
 const Contact = styled(NavLink)`
@@ -119,23 +125,30 @@ z-index: 5;
 }
 
 &>:last-child{
-    display: ${props => props.click ? 'none' : 'inline-block'};
+    display: ${props => props.click ? 'none' : "flex"};
     padding-top: 1rem;
 }
 `
 
-const NavbarContainer = styled(motion.div)`
-background-color: red;
-border: pink solid 2px;
-/* height: 50px;
-width: 50px; */
-
+const NavbarContainer = styled.div`
+display: flex;
+position: absolute;
+margin-top: 5%;
+align-self: center;
+justify-content: center;
+width: 50vw;
+/* border: 2px pink solid; */
+transition: 2s ease-in-out;
 `
+
+
 
 function Main() {
     const [click, setClick] = useState(false)
     const [show, setShow] = useState(false);
+    const [expanded, setExpanded] = useState(false)
     const [socialcolor, setSocial] = useState('white')
+
     const handleClick = () => {
         setClick(!click)
         setShow("first")
@@ -166,45 +179,58 @@ function Main() {
         setShow("third") 
         setSocial('dark')
         }
-        console.log("33")
-
     }
+
     const fourthHandle = () => {
         if (show === "fourth") {
             setShow("fourth")
-            setSocial('dark')
         } else {
         setShow("fourth") 
-        setSocial('dark')
         }
-        console.log("33")
+    }
+
+    const detailsHandle = () => {
+        expanded ? setExpanded(false) : setExpanded(true)
+
+
+        // if (show === "fourth") {
+        //     console.log('mother')
+        //     setShow("fourth")
+        // } else {
+        // setShow("fourth") 
+        // console.log('fucker')
+        // }
     }
 
 
     return (
+
         <MainContainer>
-
-            <Container>
-               {/* <PowerButton /> */}
-               <LogoComponent theme={click ? 'dark' : "light"}/>
-               <SocialIcons theme={click ? 'dark' : "light"}/>
-               <Center click={click}>
-                   <Borjgali onClick={() => handleClick()} width={click ? 120 : 300} height={click ? 250 : 250} fill='currentColor' />
-                   {/* <img source={brjg} height={100} width={100}></img> */}
-
-                   <span> {click ? "What this symbol means?" : "Click Here"}</span>
-               </Center>
-
-            </Container>
+            {expanded ? null : 
+                    <Container>
+                        {/* <PowerButton /> */}
+                        <LogoComponent theme={click ? 'dark' : "light"}/>
+                        <SocialIcons theme={click ? 'dark' : "light"}/>
+                        <Center click={click}>
+                            <Borjgali  onClick={() => handleClick()} width={click ? 120 : 300} height={click ? 160 : 250} 
+                            fill={show === "fourth" ?  "white" : "black"} 
+                            />
+                            <span>Click Here</span>
+                        </Center>
+                    </Container>
+}
             <AnimatePresence>
                 {click ? <LeftDiv show={show}> </LeftDiv> : null}
             </AnimatePresence>
+
             <AnimatePresence>
                 {click ? <RightDiv show={show}></RightDiv> : null}
             </AnimatePresence>
+
             <AnimatePresence>
                 {click ? <FourthPageDiv show={show}></FourthPageDiv> : null}
             </AnimatePresence>
+
             <AnimatePresence>
                 {click ? <ThirdPageDiv show={show}></ThirdPageDiv> : null}
             </AnimatePresence>
@@ -212,9 +238,18 @@ function Main() {
                 {click ? <Intro show={show}></Intro> : null}
                 {click ? <Second show={show}></Second> : null}
                 {click ? <Third show={show}></Third> : null}
-                {click ? <Fourth show={show}></Fourth> : null}
+                {click ? <Fourth expanded={expanded} detailsHandle={detailsHandle} show={show}></Fourth> : null}
+
+                {expanded ? null 
+                    : 
+                    <NavbarContainer>
+                        {show ? <Navbar show={show} first={firstHandle} second={secondHandle} third={thirdHandle} fourth={fourthHandle} /> : null}
+                    </NavbarContainer>
+                }
                     
-                    {show ? <Navbar show={show} first={firstHandle} second={secondHandle} third={thirdHandle} fourth={fourthHandle} /> : <div></div>} 
+
+                
+
 
         </MainContainer>
     )

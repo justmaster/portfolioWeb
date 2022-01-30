@@ -43,7 +43,7 @@ function Navbar(props) {
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 
                             className={classLeftSide} style= {props.show === "second" ?  test : null} 
-                            onClick={() => props.second()} href="javascript:;">Skills
+                            onClick={() => props.second()} href="javascript:;">Resume
                         </motion.a>
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 

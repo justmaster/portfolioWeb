@@ -119,13 +119,13 @@ const boxenter = {
 
 const conditions = {
     hidden: {opacity:0},
-    show: {opacity:1, transition: { duration: 0.5, delay: 1.6, staggerChildren: 2}},
+    show: {opacity:1, transition: { duration: 0.5, delay: 1.2, staggerChildren: 2}},
     exit: {width: 0, opacity: 0.1, opacity: 0, transition: {type: 'spring', duration: 1, staggerChildren: 0.1}},
 }
 
 const linedraw = {
     hidden: {width: 0},
-    show: {width: "28rem", transition: { type: 'tween', duration: 0.9, delay: 2,}},
+    show: {width: "28rem", transition: { type: 'tween', duration: 0.9, delay: 1.3,}},
     exit: {width: 0, transition: {type: 'spring', duration: 0.9, delay: 0}},
 }
 
