@@ -1,0 +1,78 @@
+.menu-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* top: 25px; */
+  /* right: 30px; */
+  width: 78px;
+  height: 78px;
+  transition: all 0.5s ease-in-out;
+  background: transparent;
+  border-color: transparent;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.menu-btn__burger {
+  width: 45px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px black;
+}
+
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+  content: "";
+  position: absolute;
+  width: 45px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px black;
+  transition: all 0.5s ease-in-out;
+  margin-left: -22px;
+}
+
+.menu-btn__burger::before {
+  transform: translateY(-16px);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn__burger::after {
+  transform: translateY(16px);
+  transition: all 0.5s ease-in-out;
+}
+
+/* MENU _ BTN ANIMATION */
+.menu-btn.open .menu-btn__burger {
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn.open .menu-btn__burger::after {
+  transform: rotate(-45deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn.open:hover .menu-btn__burger::before {
+  transform: rotate(-0deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn.open:hover .menu-btn__burger::after {
+  transform: rotate(0deg);
+  transition: all 0.5s ease-in-out;
+}
+
+.menu-btn.open .menu-slider {
+  z-index: 101;
+  transition: all 0.5s ease-in-out;
+}

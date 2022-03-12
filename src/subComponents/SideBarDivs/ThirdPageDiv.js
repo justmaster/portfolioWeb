@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {AnimatePresence, motion} from 'framer-motion'
-import { LightParticle } from '../Particles/LightParticle'
+import { useIsMedium } from './responsiveControl'
 
 const YellowDiv = styled(motion.div)`
     position: absolute;
@@ -33,6 +33,17 @@ const ThirdPageDiv = ({show})  => {
       else {setRender(false)}
     }, [show]);
 
+    const isMedium = useIsMedium();
+	const diventer = isMedium
+	? {
+        hidden: {width: "0%", height: "0%"},
+        animate: {width: ["0%", "100%"], height: ["100%", "100%"], transition: { duration: 1, delay: 0 }}, 
+        exit: {width: "0%",  transition: {type: 'tween', duration: 1}}
+	  }
+	: {
+        animate: {width: ["100%", "100%"], height: ["0%", "100%"], transition: { duration: 1, delay: 0 }}, 
+        exit: {height: "0%",  transition: {type: 'tween', duration: 1}}
+	  };
     
     return (
         <div>

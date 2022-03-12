@@ -4,47 +4,67 @@ import { Flip, gsap } from 'gsap/all'
 import "./index.css"
 
 
+const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, activeCard, toggleDetails}) => {
 
-const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, expanded, MainBox}) => {
+  useEffect(() => {
+    activeCard === "taxi" 
+    ?
+    ExpandCard()
+    :
+    console.log("notactivetaxi")
+  }, [activeCard]);
+  
+      const ExpandCard = () => {
+          activeCard === "taxi" 
+          ? 
+          DetailsChange() 
+          : 
+          toggleDetails()
+        console.log(activeCard)
+      }
 
-  	const DetailsChange = () => {
-		const oldContainer = document.querySelector('.expanded_blue');
-		const state = Flip.getState(oldContainer);
-    if (expanded === false) {
-    gsap.to(oldContainer, {
-        borderRadius: "70px",
-        borderRadius: "60px",
-        borderRadius: "50px",
-        borderRadius: "40px",
-        borderRadius: "30px",
-        borderRadius: "20px",
-        borderRadius: "10px",
-        borderRadius: "5px",
-        borderRadius: "0px",
-      });
-		gsap.set(oldContainer, {
-        position: 'absolute', 
-        opacity: 1,
-        width: "100vw", 
-        height: "100vh", 
-        // marginLeft: "40%",
-        zIndex: '4',
-      });
 
-      Flip.from(state, {
-        duration: 1,
-        nested: true,
-        ease: "power1.inOut",
-        absolute: true,
-        });
-        detailsHandle()
+      const DetailsChange = async() => {
 
-     } else {
+        const oldContainer = document.querySelector('.expanded_blue');
+        const state = Flip.getState(oldContainer);
 
-      gsap.set(oldContainer, {
+
+        gsap.to(oldContainer, {
+            borderRadius: "10px",
+            borderRadius: "0px",
+            delay: 0.5,
+          });
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "110vw", 
+            height: "110vh", 
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '4.5%',
+            ease: "power1.inOut",
+          });
+          Flip.from(state, { 
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
+
+      }
+
+      const CloseDetails = async() => {
+        const oldContainer = document.querySelector('.expanded_blue');
+        const state = Flip.getState(oldContainer);
+        gsap.set(oldContainer, {
           width: "calc(1rem + 15vw)",
           height: "calc(1rem + 15vw)",
           borderRadius: "70px",
+          marginTop: '0%',
+          marginLeft: '0%',
           zIndex: '4',
       });
       
@@ -57,26 +77,29 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, exp
         onComplete: () => gsap.set(oldContainer, {opacity: "0", zIndex: "-1"})
         });
         detailsHandle()
-     }
-	}
+        toggleDetails()
+      }
 
   const backstyle = {
     backgroundImage: `linear-gradient(to bottom left, ${primary_color} 40%, ${secondary_color} 115%)`
   }
   
   return (
-      <div class="main_container">
+      <div class="TX_main_container">
+          <div class="TX_card_container">
                       <div class='expanded_blue' style={backstyle}>
-                          {expanded ? 
-
-                          <div className='button_close'> 
-                            <Button text="CLOSE TEST" fun={DetailsChange}/> 
+                      {activeCard === "taxi" ? 
+                          <div className='TX_button_close'> 
+                            <Button text="CLOSE" fun={CloseDetails}/> 
                           </div>
-                            : null}
+                            : 
+                            null
+                      }
+
 
 
                       </div>
-                      { expanded ? null : 
+                      {activeCard === "taxi" ?  null : 
                         <div class="container">
                             <div class="card">
                                 <div class="front">
@@ -84,17 +107,18 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, exp
                                 </div>
                                 <div class="back" style={backstyle}>
                                   <img src={svg} alt="" class="pp"  />
-                                  <Button text="See More" fun={DetailsChange}/>
+                                  <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
                         </div>
                       }
-{/* 
-                  <div className="titleContainer">
+      </div>
+
+                  <div className="TX_titleContainer">
                     <div className="underline"></div>
                     <h2 className="title_text">Test</h2>
                     <h2 className="title_text_bigger">Test</h2>
-                  </div> */}
+                  </div>
                   
                       
       </div>

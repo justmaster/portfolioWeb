@@ -1,49 +1,75 @@
 import React, {useState, useEffect, useRef} from 'react'
 import Button from '../../hoverbutton'
+import CloseButton from '../../CloseButton/CloseButton'
 import { Flip, gsap } from 'gsap/all'
 import "./index.css"
 
 
-const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, expanded, MainBox}) => {
+const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, activeCard, toggleDetails}) => {
 
-  	const DetailsChange = () => {
-		const oldContainer = document.querySelector('.expanded');
-		const state = Flip.getState(oldContainer);
-    if (expanded === false) {
-    gsap.to(oldContainer, {
-        borderRadius: "70px",
-        borderRadius: "60px",
-        borderRadius: "50px",
-        borderRadius: "40px",
-        borderRadius: "30px",
-        borderRadius: "20px",
-        borderRadius: "10px",
-        borderRadius: "5px",
-        borderRadius: "0px",
-      });
-		gsap.set(oldContainer, {
-        position: 'absolute', 
-        opacity: 1,
-        width: "160vw", 
-        height: "100vh", 
-        // marginLeft: "40%",
-        zIndex: '4',
-      });
+  useEffect(() => {
+    activeCard === "amazon" 
+    ?
+    ExpandCard()
+    :
+    console.log("h")
+  }, [activeCard]);
+  
+      const ExpandCard = () => {
+          activeCard === "amazon" 
+          ? 
+          DetailsChange() 
+          : 
+          toggleDetails()
+        console.log(activeCard)
+      }
 
-      Flip.from(state, {
-        duration: 1,
-        nested: true,
-        ease: "power1.inOut",
-        absolute: true,
-        });
-        detailsHandle()
 
-     } else {
+      const DetailsChange = async() => {
 
-      gsap.set(oldContainer, {
+        const oldContainer = document.querySelector('.expanded');
+        const state = Flip.getState(oldContainer);
+
+
+        gsap.to(oldContainer, {
+            borderRadius: "10px",
+            borderRadius: "0px",
+            delay: 0.5,
+          }); 
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "115vw", 
+            height: "107vh", 
+            // width: "calc(60rem + 40vw)", 
+            // height: "calc(30rem + 40vw)", 
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '4%',
+            marginLeft: "55%",
+            ease: "power1.inOut",
+          });
+    
+          Flip.from(state, {
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
+
+      }
+
+      const CloseDetails = async() => {
+        const oldContainer = document.querySelector('.expanded');
+        const state = Flip.getState(oldContainer);
+        gsap.set(oldContainer, {
           width: "calc(1rem + 15vw)",
           height: "calc(1rem + 15vw)",
           borderRadius: "70px",
+          marginTop: '0%',
+          marginLeft: '0%',
           zIndex: '4',
       });
       
@@ -56,25 +82,37 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, e
         onComplete: () => gsap.set(oldContainer, {opacity: "0", zIndex: "-1"})
         });
         detailsHandle()
-     }
-	}
+        toggleDetails()
+
+
+
+      }
+
+      
 
   const backstyle = {
     backgroundImage: `linear-gradient(to bottom left, ${primary_color} 40%, ${secondary_color} 115%)`
   }
   
   return (
-      <div class="main_container">
+      <div class="AM_main_container">
+              <div class="AM_card_container">
+                
+                        <div class='expanded' style={backstyle}></div>
+{/*                         
+                        {activeCard === "amazon" 
+                            ? 
 
-                      {expanded ? 
+                            : 
+                                null
+                            } */}
 
-                      <div className='button_close'> 
-                        <Button text="CLOSE TEST" fun={DetailsChange}/> 
-                      </div>
-                        : null}
-                      <div class='expanded' style={backstyle}>
-                      </div>
-                      { expanded ? null : 
+
+                      { activeCard === "amazon" ? 
+                                                    <div className='AM_button_close'> 
+                                                    <CloseButton  fun={CloseDetails}/> 
+                                                  </div>
+                      : 
                         <div class="container">
                             <div class="card">
                                 <div class="front">
@@ -82,17 +120,21 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, e
                                 </div>
                                 <div class="back" style={backstyle}>
                                   <img src={svg} alt="" class="pp"  />
-                                  <Button text="See More" fun={DetailsChange}/>
+                                  <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
                         </div>
+
                       }
-{/* 
-                  <div className="titleContainer">
+              </div>
+
+
+
+                  <div className="AM_titleContainer">
                     <div className="underline"></div>
                     <h2 className="title_text">Test</h2>
                     <h2 className="title_text_bigger">Test</h2>
-                  </div> */}
+                  </div>
                   
                       
       </div>
@@ -106,28 +148,3 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, e
 }
 
 export default AmazonCard;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        

@@ -1,11 +1,11 @@
 export const Work = [
     {
         id:1,
-        name:"Agency Landing Page",
-        description:"It is build on top of the React JS, with styledComponents and GSAP for smooth scrolling animations.",
-        tags:["react","gsap","styledComponents"],
-        
-        demo:"https://agency-website-eta.vercel.app/",
+        name:"Description",
+        description:"Fully functional e-commerce mobile app build on React Native CLI and then hosted on Expo. With fully functional back-end. Attempt to replicate Amazon core design elements",
+        tags:["React-Native", "StyledComponents","Expo", "Gesture Handler", "Toast", "CSS"],
+        Backtags:["AWS", "AWS-Amplify", "AmazonCognito"],
+        front: "React Native, Styled Components, Expo, Gesture-Handler, Toast, CSS",
         github:"https://github.com/codebucks27/Agency-website"
     },
     {
@@ -35,27 +35,27 @@ export const Work = [
         
         demo:"https://react-sidebar.vercel.app/",
         github:"https://github.com/codebucks27/react-sidebar"
-       
-    },{
-        id:5,
-        name:"Todo App(React + Redux)",
-        description:"A todo app build using Redux-toolkit and framer-motion for smooth animations.",
-        tags:["react","redux","framer-motion"],
-        
-        demo:"http://react-redux-todo-app-git-main-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/React-Redux-Todo-App"
-        
     },
-    {
-        id:6,
-        name:"Responsive Navigation Menu",
-        description:"A reponsive navbar menu component in ReactJS with react-router functionalities. Built from scratch.",
-        tags:["react","react-router","css"],
+    // {
+    //     id:5,
+    //     name:"Todo App(React + Redux)",
+    //     description:"A todo app build using Redux-toolkit and framer-motion for smooth animations.",
+    //     tags:["react","redux","framer-motion"],
         
-        demo:"http://react-responsive-navbar-codebucks27.vercel.app/",
-        github:"https://github.com/codebucks27/React-responsive-navbar"
+    //     demo:"http://react-redux-todo-app-git-main-codebucks27.vercel.app/",
+    //     github:"https://github.com/codebucks27/React-Redux-Todo-App"
         
-    },
+    // },
+    // {
+    //     id:6,
+    //     name:"Responsive Navigation Menu",
+    //     description:"A reponsive navbar menu component in ReactJS with react-router functionalities. Built from scratch.",
+    //     tags:["react","react-router","css"],
+        
+    //     demo:"http://react-responsive-navbar-codebucks27.vercel.app/",
+    //     github:"https://github.com/codebucks27/React-responsive-navbar"
+        
+    // },
     
   
 ] 

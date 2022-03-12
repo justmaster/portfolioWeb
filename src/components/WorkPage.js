@@ -51,18 +51,7 @@ const float = keyframes`
 50% { transform: translateY(-15px) translateX(15px) }
 100% { transform: translateY(-10px) }
 `
-const container = {
 
-    hidden: {opacity: 0},
-    show: {
-        opacity: 1,
-
-        transition: {
-            staggerChildren: 0.5,
-            duration: 0.5,
-        }
-    }
-}
 
 const WorkPage = () => {
 
@@ -85,6 +74,10 @@ const WorkPage = () => {
 
 
     }, [])
+    const container = {
+        hidden: {opacity: 0},
+        show: { opacity: 1, transition: { staggerChildren: 0.5, duration: 0.5,}}
+    }
 
 
 

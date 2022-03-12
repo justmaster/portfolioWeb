@@ -14,6 +14,11 @@ left: 50%;
 bottom: 0;
 z-index: 2;
 overflow: hidden;
+@media (max-width: 1000px) {
+        top: 50%;
+        bottom: 0;
+        left: 0;
+}
 `
 
 const diventer = {

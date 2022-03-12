@@ -2,17 +2,31 @@ import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import {AnimatePresence, motion} from 'framer-motion'
 
-
 const Box = styled(motion.div)`
 position: absolute;
 left: 50%;
 top: 50%;
 transform: translate(-50%, -50%);
-
 width: 65vw;
 height:55vh;
 display: flex;
 overflow: hidden;
+flex-direction: row;
+
+@media (max-width: 1000px) {
+    width: 55vw;
+    height:65vh;
+    flex-direction: column;
+    border-image: linear-gradient(white, black) 30;
+    background: none;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid black;
+    z-index:1;
+
+  }
+
 
 
 background: linear-gradient(
@@ -34,14 +48,11 @@ width: 50%;
 position: relative;
 display: flex;
 
-/* .pic{
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%,0%);
+@media (max-width: 1000px) {
     width: 100%;
-    height: auto;
-} */
+    height: 50%;
+    margin-bottom: 0;
+  }
 `
 const Line = styled(motion.span)`
 margin-left: 6%;
@@ -56,6 +67,12 @@ position: relative;
 display: flex;
 flex-direction: column;
 justify-content: center;
+
+@media (max-width: 1000px) {
+    width: 100%;
+    height: 50%;
+    margin-bottom: 0;
+  }
 &:hover {
     ${Line} {
         background-color: grey;
@@ -68,7 +85,7 @@ display: flex;
 flex-direction: row;
 margin-left: 5%;
 width: 90%;
-padding: 0.5rem; 
+padding: calc(0.3rem + 0.2vw); 
 cursor: pointer;
 `
 
@@ -77,10 +94,9 @@ display: flex;
 flex-direction: column;
 color: grey;
 font-family: maroon;
-font-size: 1.6rem;
+font-size: calc(0.5rem + 0.9vw);
 font-family: 'Raleway', sans-serif;
 font-weight: 600;
-/* font-family: 'Ubuntu Mono', monospace; */
 `
 
 const SecondWrap = styled.div`
@@ -89,13 +105,12 @@ display: flex;
 flex-direction: column;
 color: black;
 margin-left: 31%;
-font-size: 1.6rem;
-/* font-family: maroon; */
+font-size: calc(0.5rem + 0.9vw);
 font-family: 'Cormorant Garamond', serif; 
 `
 
 const Text = styled.div`
-font-size: calc(1em + 1.5vw);
+font-size: calc(0.7em + 2vw);
 color: ${props => props.theme.body};
 padding: 2rem;
 cursor: pointer;
@@ -112,8 +127,8 @@ justify-content: space-evenly;
 
 //frame animation configs here
 const boxenter = {
-    hidden: {height: 0},
-    animate: {height: '55vh', transition: { type: 'spring', duration: 1.5, delay: 0.7, }},
+    hidden: {height: 0, opacity: 0},
+    animate: {opacity: 1, height: '55vh', transition: { type: 'spring', duration: 1.5, delay: 0.7, }},
     exit: {height: 0, opacity: 0, transition: {type: 'tween', duration: 1}}
 }
 
@@ -151,7 +166,7 @@ const Intro = ({ show }) => {
             <SubBox>
                 <Text>
                     <h1>Hi,</h1>
-                    <h3>I'm Tornike</h3>
+                    <h2>I'm Tornike</h2>
                     <h6>I create web and mobile applications using react and react-native</h6>
                 </Text>
             </SubBox>
@@ -171,7 +186,7 @@ const Intro = ({ show }) => {
                         </FirstWrap>
 
                         <SecondWrap>
-                            <h>Tornike Jintchveleishvili</h>
+                            <h>Tornike</h>
                             <h>25</h>
                             <h>Moscow Russia</h>
                         </SecondWrap>

@@ -2,10 +2,11 @@ import React, {useState, useRef} from 'react'
 import { NavLink } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useIsLowerThanMedium } from "../subComponents/SideBarDivs/responsiveControl"
+
 
 import { Borjgali } from './AllSvgs'
 import LogoComponent from '../subComponents/LogoComponent'
-import PowerButton from '../subComponents/PowerButton'
 import SocialIcons from '../subComponents/SocialIcons'
 
 import Intro from './CentralBoxMain/Intro'
@@ -17,9 +18,6 @@ import RightDiv from '../subComponents/SideBarDivs/RightDiv'
 import ThirdPageDiv from '../subComponents/SideBarDivs/ThirdPageDiv'
 import FourthPageDiv from '../subComponents/SideBarDivs/FourthPageDiv'
 import Navbar from './navbar/Navbar'
-
-import { DrawSVGPlugin, gsap} from 'gsap/all'
-
 
 
 const MainContainer = styled(motion.div)`
@@ -133,13 +131,15 @@ z-index: 5;
 const NavbarContainer = styled.div`
 display: flex;
 position: absolute;
-margin-top: 5%;
+margin-top: 4.2%;
 align-self: center;
 justify-content: center;
 width: 50vw;
 /* border: 2px pink solid; */
 transition: 2s ease-in-out;
 `
+
+
 
 
 
@@ -191,32 +191,34 @@ function Main() {
 
     const detailsHandle = () => {
         expanded ? setExpanded(false) : setExpanded(true)
-
-
-        // if (show === "fourth") {
-        //     console.log('mother')
-        //     setShow("fourth")
-        // } else {
-        // setShow("fourth") 
-        // console.log('fucker')
-        // }
     }
 
+    const isMedium = useIsLowerThanMedium();
+    const BorjgaliMain = () => {
+    return(
+        <div>{
+    isMedium
+    ? 
+        <Borjgali  onClick={() => handleClick()} width={click ? 130 : 300} height={click ? 160 : 250} fill={show === "fourth" ?  "white" : "black"} /> 
+    :   
+        <Borjgali  onClick={() => handleClick()} width={click ? "23vw" : 300} height={click ? "23vw" : 250}  fill={show === "fourth" ?  "white" : "black"} /> 
+}
+    </div>
+    )
+}
 
     return (
-
         <MainContainer>
             {expanded ? null : 
                     <Container>
                         {/* <PowerButton /> */}
                         <LogoComponent theme={click ? 'dark' : "light"}/>
-                        <SocialIcons theme={click ? 'dark' : "light"}/>
+                        <SocialIcons theme={click}/>
                         <Center click={click}>
-                            <Borjgali  onClick={() => handleClick()} width={click ? 120 : 300} height={click ? 160 : 250} 
-                            fill={show === "fourth" ?  "white" : "black"} 
-                            />
+                            <BorjgaliMain />
                             <span>Click Here</span>
                         </Center>
+
                     </Container>
 }
             <AnimatePresence>

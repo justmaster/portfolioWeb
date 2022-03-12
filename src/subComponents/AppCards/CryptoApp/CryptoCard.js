@@ -5,45 +5,66 @@ import "./index.css"
 
 
 
-const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, expanded, MainBox}) => {
+const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, activeCard, toggleDetails}) => {
 
-  	const DetailsChange = () => {
-		const oldContainer = document.querySelector('.expanded_green');
-		const state = Flip.getState(oldContainer);
-    if (expanded === false) {
-    gsap.to(oldContainer, {
-        borderRadius: "70px",
-        borderRadius: "60px",
-        borderRadius: "50px",
-        borderRadius: "40px",
-        borderRadius: "30px",
-        borderRadius: "20px",
-        borderRadius: "10px",
-        borderRadius: "5px",
-        borderRadius: "0px",
-      });
-		gsap.set(oldContainer, {
-        position: 'absolute', 
-        opacity: 1,
-        width: "100vw", 
-        height: "100vh", 
-        // marginRight: "80%",
-        zIndex: '4',
-      });
+  useEffect(() => {
+    activeCard === "crypto" 
+    ?
+    ExpandCard()
+    :
+    console.log("notactivecrypto")
+  }, [activeCard]);
+  
+      const ExpandCard = () => {
+          activeCard === "crypto" 
+          ? 
+          DetailsChange() 
+          : 
+          toggleDetails()
+        console.log(activeCard)
+      }
 
-      Flip.from(state, {
-        duration: 1,
-        nested: true,
-        ease: "power1.inOut",
-        absolute: true,
-        });
-        detailsHandle()
 
-     } else {
+      const DetailsChange = async() => {
 
-      gsap.set(oldContainer, {
+        const oldContainer = document.querySelector('.expanded_green');
+        const state = Flip.getState(oldContainer);
+        gsap.to(oldContainer, {
+            borderRadius: "10px",
+            borderRadius: "0px",
+            delay: 0.5,
+          });
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "110vw", 
+            height: "110vh", 
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '4.5%',
+            marginRight: '55%',
+            ease: "power1.inOut",
+          });
+
+          Flip.from(state, {
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
+      }
+
+      const CloseDetails = async() => {
+        const oldContainer = document.querySelector('.expanded_green');
+        const state = Flip.getState(oldContainer);
+        gsap.set(oldContainer, {
           width: "calc(1rem + 15vw)",
           height: "calc(1rem + 15vw)",
+          marginTop: '0%',
+          marginLeft: '0%',
+          marginRight: '0%',
           borderRadius: "70px",
           zIndex: '4',
       });
@@ -57,26 +78,28 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, e
         onComplete: () => gsap.set(oldContainer, {opacity: "0", zIndex: "-1"})
         });
         detailsHandle()
-     }
-	}
+        toggleDetails()
+      }
 
   const backstyle = {
     backgroundImage: `linear-gradient(to bottom left, ${primary_color} 40%, ${secondary_color} 115%)`
   }
   
   return (
-      <div class="main_container">
-                      <div class='expanded_green' style={backstyle}>
-                          {expanded ? 
+      <div class="CR_main_container">
+          <div class="CR_card_container">
 
-                          <div className='button_close'> 
-                            <Button text="CLOSE TEST" fun={DetailsChange}/> 
+                      <div class='expanded_green' style={backstyle}>
+                      {activeCard === "crypto" ? 
+                          <div className='CR_button_close'> 
+                            <Button text="CLOSE" fun={CloseDetails}/> 
                           </div>
-                            : null}
+                            : null
+                      }
 
 
                       </div>
-                      { expanded ? null : 
+                      { activeCard === "crypto" ? null : 
                         <div class="container">
                             <div class="card">
                                 <div class="front">
@@ -84,17 +107,18 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, e
                                 </div>
                                 <div class="back" style={backstyle}>
                                   <img src={svg} alt="" class="pp"  />
-                                  <Button text="See More" fun={DetailsChange}/>
+                                  <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
                         </div>
                       }
-{/* 
-                  <div className="titleContainer">
+          </div>
+
+                  <div className="CR_titleContainer">
                     <div className="underline"></div>
                     <h2 className="title_text">Test</h2>
                     <h2 className="title_text_bigger">Test</h2>
-                  </div> */}
+                  </div>
                   
                       
       </div>

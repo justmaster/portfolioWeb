@@ -1,0 +1,113 @@
+.rootForm {
+  margin-top: 5%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.inputName {
+  color: "black";
+  font-size: calc(0.9rem + 1vw);
+  font-family: "Raleway", sans-serif;
+  margin: 2% 0% 2% 2%;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.inputName:hover .inputName {
+  color: "white";
+}
+
+.form {
+  border: none;
+  margin-left: 2%;
+  width: 80%;
+  height: 13%;
+  background-color: transparent;
+}
+
+::placeholder {
+  font-family: "Raleway", sans-serif;
+  color: blue;
+  font-size: 1.3em;
+}
+
+.MessageForm {
+  border: none;
+  margin-left: 2%;
+  width: 80%;
+  height: 10%;
+  background-color: transparent;
+}
+
+.submitBut {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  align-self: center;
+  width: 150px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 0px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.check-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 40px;
+  box-shadow: 0 0 12px -2px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: flex;
+  top: 5px;
+  margin-right: 7px;
+  align-self: center;
+  opacity: 0;
+  justify-content: center;
+}
+
+.butText {
+  margin-left: 0px;
+}
+.check-box .svgSub {
+  width: 30px;
+  align-self: center;
+}
+
+.svgSub path {
+  stroke-width: 3;
+  stroke: #fff;
+  stroke-dasharray: 34;
+  stroke-dashoffset: 34;
+  stroke-linecap: round;
+}
+
+.active_submit {
+  background: #ddcf10;
+  transition: 1s;
+}
+
+.active_submit .check-box {
+  right: 0;
+  opacity: 1;
+  transition: 1s;
+}
+
+.active_submit p {
+  margin-right: 125px;
+  transition: 1s;
+}
+
+.active_submit svg path {
+  stroke-dashoffset: 0;
+  transition: 1s;
+  transition-delay: 1s;
+}

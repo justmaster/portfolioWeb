@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react'
 import styled, { keyframes } from 'styled-components'
-import { motion } from 'framer-motion'
 
 import music from "../assets/audio/u-said-it-v13-1167.mp3"
 
@@ -27,6 +26,11 @@ z-index:10;
 &>*:nth-child(5){
     animation-delay: 0.8s;
 }
+
+@media (max-width: 1000px) {
+        left: 3.5%;
+        top: 10%;    
+}   
 `
 
 const play = keyframes`
@@ -52,6 +56,12 @@ animation-play-state: ${props => props.click ? "running" : "paused"};
 height: 1rem;
 width: 2px;
 margin: 0 0.1rem;
+
+@media (max-width: 450px) {
+    height: 0.8rem;
+    width:  1.5px;
+    margin: 0 0.05rem;
+}   
 `
 
 const SoundBar = () => {

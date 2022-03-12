@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Particles from 'react-particles-js'
 import styled from 'styled-components'
-import {AnimatePresence, motion} from 'framer-motion'
+import {motion} from 'framer-motion'
 //particle config files
 
 import darkSide from '../../config/darside.json'
@@ -15,6 +15,11 @@ left: 0;
 bottom: 0;
 z-index: 2;
 overflow: hidden;
+@media (max-width: 1000px) {
+        top: 0;
+        bottom: 50%;
+        right: 0;
+}
 `
 
 const diventer = {
