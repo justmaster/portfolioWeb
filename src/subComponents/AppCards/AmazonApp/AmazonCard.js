@@ -1,11 +1,14 @@
-import React, {useState, useEffect, useRef} from 'react'
-import Button from '../../hoverbutton'
-import CloseButton from '../../CloseButton/CloseButton'
+import React, {useEffect} from 'react'
+import Button from '../../Buttons/hoverbutton'
+import CloseButton from '../../Buttons/CloseButton/CloseButton'
 import { Flip, gsap } from 'gsap/all'
+import { useIsLowerThanMedium } from '../../BackgroundDivs/responsiveControl'
+
 import "./index.css"
 
 
 const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, activeCard, toggleDetails}) => {
+  const isMedium = useIsLowerThanMedium();
 
   useEffect(() => {
     activeCard === "amazon" 
@@ -13,26 +16,39 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
     ExpandCard()
     :
     console.log("h")
+  // eslint-disable-next-line
   }, [activeCard]);
-  
-      const ExpandCard = () => {
-          activeCard === "amazon" 
-          ? 
-          DetailsChange() 
-          : 
-          toggleDetails()
-        console.log(activeCard)
-      }
 
 
-      const DetailsChange = async() => {
+  useEffect(() => {
+    activeCard === "amazon" ?
+
+    ResponsiveDetailCall()
+    :
+    console.log(null)
+  // eslint-disable-next-line
+  }, [isMedium]);
+
+  const ResponsiveDetailCall = () => {
+    isMedium ? DetailsChange() : SmallerDetailsChange()
+  }
+
+  const ExpandCard = () => {
+      activeCard === "amazon" 
+      ? 
+      
+      ResponsiveDetailCall()
+      : 
+      toggleDetails()
+  }
+
+
+
+      const DetailsChange = async() =>  {
 
         const oldContainer = document.querySelector('.expanded');
         const state = Flip.getState(oldContainer);
-
-
         gsap.to(oldContainer, {
-            borderRadius: "10px",
             borderRadius: "0px",
             delay: 0.5,
           }); 
@@ -40,9 +56,7 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
             position: 'absolute', 
             opacity: 1,
             width: "115vw", 
-            height: "107vh", 
-            // width: "calc(60rem + 40vw)", 
-            // height: "calc(30rem + 40vw)", 
+            height: "107vh",  
             zIndex: '4',
           });
           gsap.set(oldContainer, {
@@ -58,7 +72,36 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
             absolute: true,
             });
             detailsHandle()
+      }
 
+      const SmallerDetailsChange = async() =>  {
+
+        const oldContainer = document.querySelector('.expanded');
+        const state = Flip.getState(oldContainer);
+        gsap.to(oldContainer, {
+            borderRadius: "0px",
+            delay: 0.5,
+          }); 
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "104vw", 
+            height: "105vh",  
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '48%',
+            marginLeft: "17%",
+            ease: "power1.inOut",
+          });
+    
+          Flip.from(state, {
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
       }
 
       const CloseDetails = async() => {
@@ -83,43 +126,30 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
         });
         detailsHandle()
         toggleDetails()
-
-
-
       }
-
       
-
   const backstyle = {
     backgroundImage: `linear-gradient(to bottom left, ${primary_color} 40%, ${secondary_color} 115%)`
   }
   
   return (
-      <div class="AM_main_container">
-              <div class="AM_card_container">
+      <div className="AM_main_container">
+              <div className="AM_card_container">
                 
-                        <div class='expanded' style={backstyle}></div>
-{/*                         
-                        {activeCard === "amazon" 
-                            ? 
-
-                            : 
-                                null
-                            } */}
-
+                        <div className='expanded' style={backstyle} />
 
                       { activeCard === "amazon" ? 
-                                                    <div className='AM_button_close'> 
-                                                    <CloseButton  fun={CloseDetails}/> 
-                                                  </div>
+                          <div className='AM_button_close'> 
+                            <CloseButton  fun={CloseDetails}/> 
+                          </div>
                       : 
-                        <div class="container">
-                            <div class="card">
-                                <div class="front">
+                        <div className="container">
+                            <div className="card">
+                                <div className="front">
                                     <img src={logo} alt="logo" className="logo"></img>
                                 </div>
-                                <div class="back" style={backstyle}>
-                                  <img src={svg} alt="" class="pp"  />
+                                <div className="back" style={backstyle}>
+                                  <img src={svg} alt="" className="pp"  />
                                   <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
@@ -132,8 +162,8 @@ const AmazonCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
 
                   <div className="AM_titleContainer">
                     <div className="underline"></div>
-                    <h2 className="title_text">Test</h2>
-                    <h2 className="title_text_bigger">Test</h2>
+                    <h2 className="title_text">Amazon Clone</h2>
+                    <h2 className="title_text_bigger">Ecommerce</h2>
                   </div>
                   
                       

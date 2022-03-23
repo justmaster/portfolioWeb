@@ -5,49 +5,25 @@ import AmazonLogo from '../../assets/Portfolio.media/ACicon.png'
 import TwitterLogo  from '../../assets/Portfolio.media/twitter.png'
 import CryptoLogo  from '../../assets/Portfolio.media/spotify.png'
 import amazonQr from '../../assets/Portfolio.media/amazonQr.png'
+import octopus from '../../assets/Portfolio.media/octopus.PNG'
 
 
 import phone_svg from "../../assets/Portfolio.media/smartphone.svg"
-import twitter from "../../assets/Portfolio.media/twitter.png"
-import spotify from "../../assets/Portfolio.media/spotify.png"
+// eslint-disable-next-line
 import Flipcard from "../../subComponents/flipcard/flipcard"
-import TypeButton from '../../subComponents/TypeButton/TypeButton'
-// import "./CentralBoxCSS/Fourth.css"
-import { Flip, gsap } from 'gsap/all'
+import WebApp from '../../subComponents/webapps/webapps'
+import TypeButton from '../../subComponents/Buttons/TypeButton/TypeButton'
 import AmazonCard from '../../subComponents/AppCards/AmazonApp/AmazonCard'
 import TaxiCard from '../../subComponents/AppCards/TaxiApp/TaxiCard'
 import CryptoCard from '../../subComponents/AppCards/CryptoApp/CryptoCard'
-// import VideoPlayer from '../../subComponents/videoPlayer/videoPlayer'
-import { Player } from 'video-react';
-import videotest from '../../assets/video/videotest.mp4'
-// import '~video-react/dist/video-react.css'
-// @import '~video-react/styles/scss/video-react';
-import Rnappdetails from '../../subComponents/VideoPlayer2/videoPlayer'
-import AmazonDesc from '../MobileAppsDesc/AmazonDesc'
+import AmazonDesc from '../../subComponents/AppCards/MobileAppsDesc/AmazonDesc'
 
 import { Work } from '../../data/WorkData'
 
 
 
-const RNContainer = styled(motion.div)`
-height: 100vh;
-width: 100vw;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-justify-self: center;
-overflow: visible;
-/* z-index: 1; */
-`
 
-const AppType = styled(motion.h)`
-position: absolute;
-color: white;
-font-size: 20;
-margin-bottom: 27%;
-z-index: 2;
-`
+
 
 const MainBox = styled(motion.div)`
 display: flex;
@@ -59,12 +35,51 @@ position: absolute;
 z-index:4;
 height: 100vh;
 width: 100vw;
+
+@media (max-width: 700px) {
+    flex-direction: column;
+  }
 `
 
-const PlayerHost = styled(motion.div)`
-width: 100vw;
-z-index: 50;
+const AppType = styled(motion.h)`
+position: absolute;
+color: white;
+margin-bottom: 27%;
+z-index: 2;
 
+@media (max-width: 1000px) {
+    margin-bottom: 50%;
+  }
+  @media (max-width: 700px) {
+    margin-bottom: 37%;
+    left: 0px;
+  }
+`
+
+const WebBox = styled(motion.div)`
+
+margin-top: 3%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-around;
+background-color: transparent;
+position: absolute;
+height: auto;
+width: auto;
+gap: 5%;
+
+@media (max-width: 1000px) {
+    flex-direction: column;
+  }
+
+@media (max-width: 900px) {
+    margin-top: 6%;
+}
+
+@media (max-width: 500px) {
+    justify-content: space-between;
+}
 `
 
 
@@ -72,12 +87,6 @@ z-index: 50;
 
 
 //framer animation configs here
-
-const boxenter = {
-    hidden: {width: 0, opacity: 0},
-    animate: {width: '70vw', opacity: 1, transition: { type: 'spring', duration: 1.3, delay: 0.6, }},
-    exit: {width: 0, opacity: 0, transition: {type: 'tween', duration: 0.7}}
-}
 
 const conditions = {
     hidden: {  opacity: 0},
@@ -92,7 +101,7 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
             {setRender(true)}
         else 
             {setRender(false)}
-        });
+        }, [show]);
 
     const [shouldRender, setRender] = useState(false);
     const [active, setActive] = useState('mobile');
@@ -122,7 +131,7 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
     }
 
 
-        useEffect(() => {
+    useEffect(() => {
         console.log(Work[0].id)
     });
 
@@ -133,8 +142,6 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
         
     <AnimatePresence>
                 {shouldRender && (  
-
-                    
                     <MainBox variants={conditions} initial="hidden" animate="show" exit="exit">
 
                         {expanded ? null : 
@@ -154,6 +161,19 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
                             <CryptoCard activeCard={activeCard} toggleDetails={toggleDetailsCR} expanded={expanded} detailsHandle={detailsHandle} logo={CryptoLogo} svg={phone_svg} primary_color="#3CC94F" secondary_color="#3CC94F"/>
                         : null}
 
+                        {active === "web" ?
+                        <WebBox>
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
+                                apptype={"Petro Energy Caspian"} appname={"Oil Refinery"} appscreen={octopus}/>
+
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
+                            apptype={"Octopus Project"} appname={"Design"} appscreen={octopus}/>
+
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
+                            apptype={"Law Firm"} appname={"Commercial"} appscreen={octopus}/>
+                        </WebBox>
+                        : null}
+
 
                         {activeCard === "amazon" ? < AmazonDesc name={Work[0].name} description={Work[0].description} tags={Work[0].tags} Backtags={Work[0].Backtags} qrCode={amazonQr}/> : null}
 
@@ -170,22 +190,3 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
 
 export default Fourth
 
-
-// <RNContainer variants={conditions} initial="hidden" animate="show" exit="exit">
-
-// </RNContainer>
-
-
-// <Flipcard 
-// // details={DetailsChange} 
-// applogo={AmazonLogo} 
-// primary_color="#e47911" 
-// secondary_color="#e47911" 
-// link="https://shazoo.ru/" 
-// svg={phone_svg} 
-// apptype={"Ecommerce"} 
-// appname={"AmazonClone"}>
-
-// </Flipcard>
-// <Flipcard applogo={twitter} primary_color="#36af89" secondary_color="#bffd43" link="https://shazoo.ru/" svg={phone_svg} apptype={"Service"} appname={"UberClone"}/>
-// <Flipcard applogo={spotify} primary_color="#454d44" secondary_color="#13a805" link="https://shazoo.ru/" svg={phone_svg} apptype={"Tourism"} appname={"WineRoute"}/>

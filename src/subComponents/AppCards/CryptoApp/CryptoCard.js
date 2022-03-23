@@ -1,7 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react'
-import Button from '../../hoverbutton'
+import React, {useEffect} from 'react'
+import Button from '../../Buttons/hoverbutton'
 import { Flip, gsap } from 'gsap/all'
 import "./index.css"
+import { useIsLowerThanMedium } from '../../BackgroundDivs/responsiveControl'
 
 
 
@@ -13,16 +14,26 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
     ExpandCard()
     :
     console.log("notactivecrypto")
+  // eslint-disable-next-line
   }, [activeCard]);
+
+  const isMedium = useIsLowerThanMedium();
+
+  const ResponsiveDetailCall = () => {
+    isMedium ? DetailsChange() : SmallerDetailsChange()
+  }
   
-      const ExpandCard = () => {
-          activeCard === "crypto" 
-          ? 
-          DetailsChange() 
-          : 
-          toggleDetails()
-        console.log(activeCard)
-      }
+  const ExpandCard = () => {
+    activeCard === "crypto" 
+    ? 
+    ResponsiveDetailCall()
+    : 
+    toggleDetails()
+  // eslint-disable-next-line
+
+  console.log(activeCard)
+}
+
 
 
       const DetailsChange = async() => {
@@ -30,7 +41,6 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
         const oldContainer = document.querySelector('.expanded_green');
         const state = Flip.getState(oldContainer);
         gsap.to(oldContainer, {
-            borderRadius: "10px",
             borderRadius: "0px",
             delay: 0.5,
           });
@@ -47,6 +57,36 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
             ease: "power1.inOut",
           });
 
+          Flip.from(state, {
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
+      }
+
+      const SmallerDetailsChange = async() =>  {
+
+        const oldContainer = document.querySelector('.expanded_green');
+        const state = Flip.getState(oldContainer);
+        gsap.to(oldContainer, {
+            borderRadius: "0px",
+            delay: 0.5,
+          }); 
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "102vw", 
+            height: "102vh",  
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '-55%',
+            marginLeft: "21%",
+            ease: "power1.inOut",
+          });
+    
           Flip.from(state, {
             duration: 1,
             nested: true,
@@ -86,10 +126,10 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
   }
   
   return (
-      <div class="CR_main_container">
-          <div class="CR_card_container">
+      <div className="CR_main_container">
+          <div className="CR_card_container">
 
-                      <div class='expanded_green' style={backstyle}>
+                      <div className='expanded_green' style={backstyle}>
                       {activeCard === "crypto" ? 
                           <div className='CR_button_close'> 
                             <Button text="CLOSE" fun={CloseDetails}/> 
@@ -100,13 +140,13 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
 
                       </div>
                       { activeCard === "crypto" ? null : 
-                        <div class="container">
-                            <div class="card">
-                                <div class="front">
+                        <div className="container">
+                            <div className="card">
+                                <div className="front">
                                     <img src={logo} alt="logo" className="logo"></img>
                                 </div>
-                                <div class="back" style={backstyle}>
-                                  <img src={svg} alt="" class="pp"  />
+                                <div className="back" style={backstyle}>
+                                  <img src={svg} alt="" className="pp"  />
                                   <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
@@ -116,8 +156,8 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
 
                   <div className="CR_titleContainer">
                     <div className="underline"></div>
-                    <h2 className="title_text">Test</h2>
-                    <h2 className="title_text_bigger">Test</h2>
+                    <h2 className="title_text">Crypto Stalker</h2>
+                    <h2 className="title_text_bigger">Finance</h2>
                   </div>
                   
                       

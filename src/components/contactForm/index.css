@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
 }
 
 .inputName {
@@ -110,4 +109,105 @@
   stroke-dashoffset: 0;
   transition: 1s;
   transition-delay: 1s;
+}
+
+@media screen and (max-width: 1000px) {
+  .rootForm {
+    margin-top: 0%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .inputName {
+    font-size: calc(0.5rem + 1vw);
+    margin: 0.5% 0% 1% 2%;
+  }
+  ::placeholder {
+    font-family: "Raleway", sans-serif;
+    color: blue;
+    font-size: calc(0.3rem + 1vw);
+  }
+
+  .MessageForm {
+    border: none;
+    margin-left: 2%;
+    width: 80%;
+    height: 10%;
+    background-color: transparent;
+  }
+
+  .submitBut {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    align-self: center;
+    width: 130px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background: #2f2f2f;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 0px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .check-box {
+    width: 26px;
+    height: 26px;
+    border-radius: 40px;
+    box-shadow: 0 0 12px -2px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    display: flex;
+    top: 5px;
+    margin-right: 7px;
+    align-self: center;
+    opacity: 0;
+    justify-content: center;
+  }
+
+  .butText {
+    margin-left: 0px;
+  }
+  .check-box .svgSub {
+    width: 30px;
+    align-self: center;
+  }
+
+  .svgSub path {
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    stroke-linecap: round;
+  }
+
+  .active_submit {
+    background: #ddcf10;
+    transition: 1s;
+  }
+
+  .active_submit .check-box {
+    right: 0;
+    opacity: 1;
+    transition: 1s;
+  }
+
+  .active_submit p {
+    margin-right: 125px;
+    transition: 1s;
+  }
+
+  .active_submit svg path {
+    stroke-dashoffset: 0;
+    transition: 1s;
+    transition-delay: 1s;
+  }
+}
+
+@media screen and (max-width: 1000px) {
 }

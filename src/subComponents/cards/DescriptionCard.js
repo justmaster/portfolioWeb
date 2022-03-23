@@ -10,11 +10,11 @@ width: 17vw;
 height: 26vh;
 background-color: ${props => props.theme.text};
 color: ${props => props.theme.body};
-padding: 1.5rem 2rem;
+padding: 5vh 2.5vw;
 border-radius: 0 50px 0;
 display: flex;
 flex-direction: column;
-justify-content: space-around;
+justify-content: center;
 border: 1px solid ${props => props.theme.body};
 transition: all 0.2s ease;
 
@@ -23,15 +23,34 @@ transition: all 0.2s ease;
     color: ${props => props.theme.text};
     border: 1px solid ${props => props.theme.text};
 }
+
+@media (max-width: 700px) {
+    width: 17vw;
+    height: 20vh;
+    padding: 0.01vh 6vw;
+    justify-content: center;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    margin-right: 1.5%;
+    margin-left: 1.5%;
+    justify-content: center;
+}
+
+@media (max-width: 400px) {
+    width: 17vw;
+    height: 17vh;
+    padding: 0.01vh 6vw;
+    justify-content: center;
+}
 `
 
 const Title = styled.h2`
 font-size: calc(0.1px + 1.4vw);
 align-self: center;
-// border-bottom: 1.2px solid ${props => props.theme.body};
-// ${Box}:hover &{
-//     border-bottom: 1.2px solid ${props => props.theme.text};
-// }
+margin: 2% 0% 2% 0%;
+@media (max-width: 700px) {
+    font-size: calc(2px + 1.4vw);
+}
 `
 
 const Description = styled.h2`
@@ -42,11 +61,23 @@ font-family: 'Karla', sans-serif;
 font-weight: 400;
 border-top: 1.5px solid ${props => props.theme.body};
 border-bottom: 1.5px solid ${props => props.theme.body};
-padding: calc(3px + 1.2vw);
+padding: calc(3px + 0.8vw);
 
 ${Box}:hover &{
     border-top: 1.5px solid ${props => props.theme.text};
     border-bottom: 1.5px solid ${props => props.theme.text};
+}
+
+@media (max-width: 700px) {
+    font-size: calc(2.1px + 0.9vw);
+    padding: 3px;
+    width: 25vw;
+    align-self: center
+
+
+
+
+
 }
 
 `
@@ -66,8 +97,7 @@ const Item = {
     }
 }
 
-export const DescCard = ({name, description, tags}) => {
-    // const {id, name, description, tags, demo, github} = props.data;
+export const DescCard = ({name, description}) => {
     return (
         <Box variants={Item}>
             <Title>{name}</Title>
@@ -82,135 +112,3 @@ export const DescCard = ({name, description, tags}) => {
 
 
 
-
-
-
-
-
-
-
-// import React from 'react'
-// import { NavLink} from 'react-router-dom';
-// import styled from 'styled-components';
-// import { Github } from '../components/AllSvgs';
-// import { motion } from 'framer-motion';
-
-
-
-
-// const Box = styled(motion.li)`
-// width: 16rem;
-// height: 40vh;
-// background-color: ${props => props.theme.text};
-// color: ${props => props.theme.body};
-// padding: 1.5rem 2rem;
-// margin-right: 7rem;
-// border-radius: 0 50px 0;
-// display: flex;
-// flex-direction: column;
-// justify-content: space-between;
-// border: 1px solid ${props => props.theme.body}
-// transition: all 0.2s ease;
-
-// &:hover{
-//     background-color: ${props => props.theme.body};
-//     color: ${props => props.theme.text};
-//     border: 1px solid ${props => props.theme.text};
-// }
-// `
-
-// const Title = styled.h2`
-// font-size: calc(1em + 0.5vw);
-// `
-
-// const Description = styled.h2`
-// font-size: calc(0.8em + 0.5vw);
-// font-family: 'Karla', sans-serif;
-// font-weight: 500;
-// `
-
-// const Tags = styled.div`
-// border-top: 2px solid ${props => props.theme.body};
-// padding-top: 0.5rem;
-// display: flex;
-// flex-wrap: wrap;
-// ${Box}:hover &{
-//     border-top: 2px solid ${props => props.theme.text};
-// }
-// `
-
-// const Tag = styled.div`
-// margin-right: 1rem;
-// font-size: calc(0.8em + 0.3vw);
-// `
-
-// const Footer = styled.footer`
-// display: flex;
-// justify-content: space-between;
-
-// `
-
-// const Link = styled(NavLink)`
-// background-color: ${props => props.theme.body};
-// color: ${props => props.theme.text};
-// text-decoration: none;
-// padding: 0.5rem calc(2rem + 2vw);
-// border-radius: 0 0 0 50px;
-// font-size: calc(1em + 0.5vw);
-
-// ${Box}:hover &{
-//     background-color: ${props => props.theme.text};
-//     color: ${props => props.theme.body};
-// }
-// `
-
-
-// const Git = styled(NavLink)`
-// color: inherit;
-// text-decoration: none;
-// ${Box}:hover &{
-//     &>*{
-//         fill: ${props => props.theme.text};
-//     }
-// }
-// `
-
-// const Item = {
-//     hidden:{
-//         scale:0
-//     },
-//     show:{
-//         scale:1,
-//         transition: {
-//             type: 'spring',
-//             duration: 0.5
-//         }
-//     }
-// }
-
-// export const Card = (props) => {
-//     const {id, name, description, tags, demo, github} = props.data;
-//     return (
-//         <Box key={id} variants={Item}>
-//             <Title>{name}</Title>
-//             <Description>
-//                 {description}
-//             </Description>
-//             <Tags>
-//                 {
-//                     tags.map((t,id) => {
-//                         return <Tag key={id}>#{t}</Tag>
-//                     })
-//                 }
-//             </Tags>
-//             <Footer>
-//                 <Link to={{pathname: '${demo}'}} target="_blank">
-//                     Visit
-//                 </Link>
-//                 <Git to={{pathname: '${github}'}} target="_blank">
-//                     <Github width={30} height={30} />
-//                 </Git>
-//             </Footer>
-//         </Box>
-//     )
-// }

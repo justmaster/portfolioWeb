@@ -4,8 +4,8 @@ import './navbar.scss'
 
 function Navbar(props) {
 
-    const [classLeftSide, setClassLeftSide] = useState("link_white");
-    const [classRightSide, setClassRightSide] = useState("link");
+    const [classNameLeftSide, setclassNameLeftSide] = useState("link_white");
+    const [classNameRightSide, setclassNameRightSide] = useState("link");
 
     const test = {
         borderBottom: "2px solid white",
@@ -17,11 +17,11 @@ function Navbar(props) {
 
     useEffect(() => {
         if (props.show === "first" || props.show === "second") {
-            setClassLeftSide("link_white")
-            setClassRightSide("link")
+            setclassNameLeftSide("link_white")
+            setclassNameRightSide("link")
         } else if (props.show === "third" || props.show === "fourth") {
-            setClassLeftSide("link_white")
-            setClassRightSide("link_white")
+            setclassNameLeftSide("link_white")
+            setclassNameRightSide("link_white")
         } 
     }, [props.show])
 
@@ -37,22 +37,26 @@ function Navbar(props) {
                 <ul className='navbar'>
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 
-                            className={classLeftSide} style={props.show === "first" ?  test : null} 
+                            className={classNameLeftSide} style={props.show === "first" ?  test : null}
+                            // eslint-disable-next-line
                             onClick={() => props.first()}  href="javascript:;">About Me
                         </motion.a>
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 
-                            className={classLeftSide} style= {props.show === "second" ?  test : null} 
+                            className={classNameLeftSide} style= {props.show === "second" ?  test : null}
+                            // eslint-disable-next-line
                             onClick={() => props.second()} href="javascript:;">Resume
                         </motion.a>
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 
-                            className={classRightSide} style= {props.show === "fourth" ?  test : null} 
+                            className={classNameRightSide} style= {props.show === "fourth" ?  test : null} 
+                            // eslint-disable-next-line
                             onClick={() => props.fourth()}  href="javascript:;">Portfolio
                         </motion.a>
 
                         <motion.a variants={naventer} initial="hidden" animate="animate" exit="exit" 
-                            className={classRightSide} style= {props.show === "third" ?  test : null} 
+                            className={classNameRightSide} style= {props.show === "third" ?  test : null}
+                            // eslint-disable-next-line
                             onClick={() => props.third()} href="javascript:;">Contact
                         </motion.a>
                 </ul>

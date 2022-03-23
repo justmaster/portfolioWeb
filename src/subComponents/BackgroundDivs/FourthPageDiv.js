@@ -15,6 +15,8 @@ const DarkDiv = styled(motion.div)`
     width: 0;
     height: 0;
     z-index: 1;
+    width: 0;
+    height: 0;
     overflow: hidden;
 
     @media (max-width: 1000px) {
@@ -42,6 +44,7 @@ const FourthPageDiv = ({show})  => {
         exit: {width: "50%",  transition: {type: 'tween', duration: 1}}
 	  }
 	: {
+        hidden: {width: "0%", height: "0%"},
         animate: {width: ["100%", "100%"], height: ["50%", "100%"], transition: { duration: 1, delay: 0 }}, 
         exit: {height: "50%",  transition: {type: 'tween', duration: 1}}
 	  };

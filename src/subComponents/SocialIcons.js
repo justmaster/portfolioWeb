@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { Facebook, Github, Twitter, Linkedin } from '../components/AllSvgs'
 import { motion } from 'framer-motion'
-import { useIsMedium } from "../subComponents/SideBarDivs/responsiveControl"
+import { useIsMedium } from "../subComponents/BackgroundDivs/responsiveControl"
 
 
 const Icons = styled.div`

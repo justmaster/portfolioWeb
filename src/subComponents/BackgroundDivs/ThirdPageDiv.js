@@ -16,15 +16,6 @@ const YellowDiv = styled(motion.div)`
     overflow: hidden;
 `
 
-const diventer = {
-    hidden: {width: "0%", height: "0%"},
-    animate: {
-        width: ["0%", "100%"],
-        height: ["100%", "100%"],
-        transition: { duration: 1, delay: 0 }},
-        exit: {width: 0, transition: {type: 'tween', duration: 1}}
-}
-
 const ThirdPageDiv = ({show})  => {
     const [shouldRender, setRender] = useState(show);
 

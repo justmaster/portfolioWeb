@@ -83,3 +83,37 @@ input:checked + .label-but {
 input[type="checkbox"] {
   display: none;
 }
+
+@media only screen and (max-width: 1000px) {
+  .TypeButRoot {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .label-but {
+    padding: 0.7rem 1.3rem;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .TypeButRoot {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .label-but {
+    padding: 0.7rem 1.3rem;
+    font-size: 10px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .label-but {
+    padding: 0.4rem 1rem;
+    font-size: 6px;
+    font-weight: 500;
+  }
+}

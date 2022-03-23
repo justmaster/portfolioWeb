@@ -128,14 +128,14 @@ justify-content: space-evenly;
 //frame animation configs here
 const boxenter = {
     hidden: {height: 0, opacity: 0},
-    animate: {opacity: 1, height: '55vh', transition: { type: 'spring', duration: 1.5, delay: 0.7, }},
+    animate: { height: '55vh', opacity: 1, transition: { type: 'spring', duration: 1.5, delay: 0.7, }},
     exit: {height: 0, opacity: 0, transition: {type: 'tween', duration: 1}}
 }
 
 const conditions = {
     hidden: {opacity:0},
     show: {opacity:1, transition: { duration: 0.5, delay: 1.2, staggerChildren: 2}},
-    exit: {width: 0, opacity: 0.1, opacity: 0, transition: {type: 'spring', duration: 1, staggerChildren: 0.1}},
+    exit: {width: 0, opacity: [0.1, 0], transition: {type: 'spring', duration: 1, staggerChildren: 0.1}},
 }
 
 const linedraw = {

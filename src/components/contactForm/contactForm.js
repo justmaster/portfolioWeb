@@ -30,7 +30,7 @@ const linedrawTh = {
 
 export default function ContactForm() {
   const [buttonText, setButtonText] = useState("submit");
-  const [buttonClass, setButtonClass] = useState("submitBut");
+  const [buttonclassName, setButtonclassName] = useState("submitBut");
 
 
 
@@ -49,7 +49,7 @@ export default function ContactForm() {
   };
 
  const buttonChange = () => {
-      setButtonClass("submitBut active_submit")
+      setButtonclassName("submitBut active_submit")
       setButtonText("Thanks!")
   };
 
@@ -67,7 +67,7 @@ export default function ContactForm() {
         <Line variants={linedrawTh} initial='hidden' animate='show' exit='exit'/>
         {/* <Button text={"nigga"}  fun={submit} type="submit"></Button> */}
 
-        <button  id="btn"  class={buttonClass} onClick={() => buttonChange()}>
+        <button  id="btn"  className={buttonclassName} onClick={() => buttonChange()}>
             <p  id="btnText" className="butText">{buttonText}</p>
             <div className="check-box">
                 <svg className="svgSub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">

@@ -10,9 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* font-family: "Cormorant Garamond", serif; */
   font-family: "Raleway", sans-serif;
-  /* font-family: "Ubuntu Mono", monospace; */
 }
 
 .main_container {
@@ -58,10 +56,6 @@
   transform: rotateY(180deg);
 }
 
-/* .card:hover ~ .card__inner {
-  transform: rotateY(180deg);
-} */
-
 .card__face {
   width: 100%;
   height: 100%;
@@ -73,7 +67,6 @@
 }
 
 .card__face--front {
-  background-image: url("");
   background-size: cover;
   display: flex;
   align-items: center;

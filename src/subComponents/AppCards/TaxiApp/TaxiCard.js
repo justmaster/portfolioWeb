@@ -1,10 +1,21 @@
-import React, {useState, useEffect, useRef} from 'react'
-import Button from '../../hoverbutton'
+import React, {useEffect} from 'react'
+import Button from '../../Buttons/hoverbutton'
 import { Flip, gsap } from 'gsap/all'
 import "./index.css"
+import { useIsLowerThanMedium } from '../../BackgroundDivs/responsiveControl'
 
 
 const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, activeCard, toggleDetails}) => {
+
+  const ExpandCard = () => {
+    activeCard === "taxi" 
+    ? 
+    ResponsiveDetailCall()
+    : 
+    toggleDetails()
+  // eslint-disable-next-line
+  console.log(activeCard)
+}
 
   useEffect(() => {
     activeCard === "taxi" 
@@ -12,26 +23,23 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
     ExpandCard()
     :
     console.log("notactivetaxi")
+  // eslint-disable-next-line 
   }, [activeCard]);
   
-      const ExpandCard = () => {
-          activeCard === "taxi" 
-          ? 
-          DetailsChange() 
-          : 
-          toggleDetails()
-        console.log(activeCard)
-      }
+  const isMedium = useIsLowerThanMedium();
+
+  const ResponsiveDetailCall = () => {
+    isMedium ? DetailsChange() : SmallerDetailsChange()
+  }
+  
 
 
       const DetailsChange = async() => {
-
         const oldContainer = document.querySelector('.expanded_blue');
         const state = Flip.getState(oldContainer);
 
 
         gsap.to(oldContainer, {
-            borderRadius: "10px",
             borderRadius: "0px",
             delay: 0.5,
           });
@@ -53,7 +61,37 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
             absolute: true,
             });
             detailsHandle()
+      }
 
+      
+      const SmallerDetailsChange = async() =>  {
+
+        const oldContainer = document.querySelector('.expanded_blue');
+        const state = Flip.getState(oldContainer);
+        gsap.to(oldContainer, {
+            borderRadius: "0px",
+            delay: 0.5,
+          }); 
+        gsap.set(oldContainer, {
+            position: 'absolute', 
+            opacity: 1,
+            width: "102vw", 
+            height: "102vh",  
+            zIndex: '4',
+          });
+          gsap.set(oldContainer, {
+            marginTop: '0%',
+            marginLeft: "13.5%",
+            ease: "power1.inOut",
+          });
+    
+          Flip.from(state, {
+            duration: 1,
+            nested: true,
+            ease: "power1.inOut",
+            absolute: true,
+            });
+            detailsHandle()
       }
 
       const CloseDetails = async() => {
@@ -85,9 +123,9 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
   }
   
   return (
-      <div class="TX_main_container">
-          <div class="TX_card_container">
-                      <div class='expanded_blue' style={backstyle}>
+      <div className="TX_main_container">
+          <div className="TX_card_container">
+                      <div className='expanded_blue' style={backstyle}>
                       {activeCard === "taxi" ? 
                           <div className='TX_button_close'> 
                             <Button text="CLOSE" fun={CloseDetails}/> 
@@ -100,13 +138,13 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
 
                       </div>
                       {activeCard === "taxi" ?  null : 
-                        <div class="container">
-                            <div class="card">
-                                <div class="front">
+                        <div className="container">
+                            <div className="card">
+                                <div className="front">
                                     <img src={logo} alt="logo" className="logo"></img>
                                 </div>
-                                <div class="back" style={backstyle}>
-                                  <img src={svg} alt="" class="pp"  />
+                                <div className="back" style={backstyle}>
+                                  <img src={svg} alt="" className="pp"  />
                                   <Button text="See More" fun={ExpandCard}/>
                                 </div>
                             </div>
@@ -116,8 +154,8 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
 
                   <div className="TX_titleContainer">
                     <div className="underline"></div>
-                    <h2 className="title_text">Test</h2>
-                    <h2 className="title_text_bigger">Test</h2>
+                    <h2 className="title_text">Tbilisi Taxi</h2>
+                    <h2 className="title_text_bigger">Service</h2>
                   </div>
                   
                       

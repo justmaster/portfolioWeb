@@ -44,3 +44,14 @@ svg {
 .controls > button:first-child {
   margin-right: 0.25rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .rootMap {
+    height: 70%;
+    width: 60%;
+    align-self: center;
+    margin-top: 2%;
+    border: 1px black;
+    cursor: move;
+  }
+}

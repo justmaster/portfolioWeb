@@ -11,12 +11,12 @@ function TypeButton(props) {
     return (
         <AnimatePresence>
 
-            <div>
+            <div className="TypeButRoot">
 
-                <input name="buttons" onClick={() => props.first()} type="checkbox" id="cut" checked= {props.active === props.Name ? true : false} />     
+                <input name="buttons" onChange={() => props.first()} type="checkbox" id="cut" checked={props.active === props.Name ? true : false} defaultChecked />     
                 <label className="label-but" for="cut">{props.Name}</label>
 
-                <input name="buttons" onClick={() => props.second()} type="checkbox" id="copy" checked= {props.active === props.NameSecond ? true : false}/>
+                <input name="buttons" onChange={() => props.second()} type="checkbox" id="copy" checked= {props.active === props.NameSecond ? true : false}/>
                 <label className="label-but" for="copy">{props.NameSecond}</label>
 
             </div>

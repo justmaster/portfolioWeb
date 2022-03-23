@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import Button from '../hoverbutton'
+import Button from '../Buttons/hoverbutton'
 
 import { Flip, gsap } from 'gsap/all'
 
@@ -55,13 +55,13 @@ export default function Flipcard({applogo, primary_color, secondary_color, link,
 
     return (
 <div>
-				<div class="card">
-						<div class={flipped ? "card_inner" : "card__inner is-flipped"} onClick={flipcard}>
-							<div class="card__face card__face--front" style={cardStyle}></div>
-							<div class="card__face card__face--back"  style={{backgroundColor: {primary_color}}}>
-								<div class="card__content" >
-									<div class="card__header"  style={mystyle}>
-										<img src={svg} alt="" class="pp" />
+				<div className="card">
+						<div className={flipped ? "card_inner" : "card__inner is-flipped"} onClick={flipcard}>
+							<div className="card__face card__face--front" style={cardStyle}></div>
+							<div className="card__face card__face--back"  style={{backgroundColor: {primary_color}}}>
+								<div className="card__content" >
+									<div className="card__header"  style={mystyle}>
+										<img src={svg} alt="" className="pp" />
 										<Button 
 											fun={DetailsChange}
 											// link={link} 

@@ -4,7 +4,7 @@ import {AnimatePresence, motion} from 'framer-motion'
 import { Employment } from '../AllSvgs'
 import { Education } from '../AllSvgs'
 import { Skills } from '../AllSvgs'
-import StyleButton from '../../subComponents/stylebutton/stylebutton'
+import StyleButton from '../../subComponents/Buttons/stylebutton/stylebutton'
 
 const Box = styled(motion.div)`
 
@@ -119,11 +119,6 @@ margin-right: 0;
     margin-top: 0%;
 }
 `
-
-
-
-
-
 
 const JobContainer = styled.div`
 display: flex;
@@ -349,12 +344,6 @@ const boxenter = {
     hidden: {width: 0, opacity: 0},
     animate: {width: '70vw', opacity: 1, transition: { type: 'spring', duration: 1.5, delay: 0.7, }},
     exit: {width: 0, opacity: 0, transition: {type: 'tween', duration: 1}}
-}
-
-const conditions = {
-    hidden: {opacity:0},
-    show: {opacity:1, transition: { duration: 0.5, delay: 1.9}},
-    exit: {width: 0, opacity: 0, transition: {type: 'spring', duration: 1}},
 }
 
 const innerbox = {

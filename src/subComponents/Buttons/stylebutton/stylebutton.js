@@ -19,7 +19,7 @@ function StyleButton(props) {
             initial='hidden' 
             animate='show' 
             exit='exit' 
-            class="fancy-btn"
+            className="fancy-btn"
         >
                 {props.text}
         </motion.button>

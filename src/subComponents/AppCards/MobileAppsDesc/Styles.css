@@ -1,0 +1,76 @@
+.main {
+  position: absolute;
+  height: auto;
+  width: auto;
+  background-color: transparent;
+  z-index: 4;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+.appDescription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.smallTools {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4%;
+  z-index: 5;
+  gap: 3vw;
+  transition: 0.5s ease-in-out;
+}
+
+.qrCode {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10%;
+}
+
+@media screen and (max-width: 700px) {
+  .main {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .appDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .smallTools {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    z-index: 5;
+    gap: 2vw;
+    transition: 0.5s ease-in-out;
+  }
+
+  .qrCode {
+    width: 110px;
+    height: 100px;
+    align-self: center;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .qrCode {
+    width: 110px;
+    height: 100px;
+    align-self: center;
+  }
+}

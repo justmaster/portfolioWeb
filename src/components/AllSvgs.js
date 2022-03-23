@@ -1,7 +1,4 @@
 import * as React from "react"
-import { useEffect, useRef} from "react"
-import { DrawSVGPlugin, gsap, drawSVG, ease, Power3} from 'gsap/all'
-import gsapCore from "gsap/gsap-core"
 
 
 export const PowerBtn = (props) => {
@@ -252,21 +249,21 @@ export const PowerBtn = (props) => {
   // }, [])
     return (
       <div>
-    <svg  width={props.width} height={props.height} zIndex={2} backgroundColor="white"  version="1.1" viewBox="0 0 744.09 1052.4" 
+    <svg  width={props.width} height={props.height}   version="1.1" viewBox="0 0 744.09 1052.4" 
     {...props}
     >
 
-    <g class="Group" transform="matrix(1.6007 0 0 1.6007 -8920.8 -3237)">
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect  class="BoundingBox" x="5608" y="2308" width="202" height="141" fill="none"/>
+    <g className="Group" transform="matrix(1.6007 0 0 1.6007 -8920.8 -3237)">
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect  className="BoundingBox" x="5608" y="2308" width="202" height="141" fill="none"/>
     <path  d="m5694 2410c50 11 96-14 115-58-1 6-1 12-3 18-13 55-64 88-120 75-55-12-88-64-75-120 1-6 3-12 5-17-2 48 29 91 78 102z"/>
     </g>
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect  class="BoundingBox" x="5644" y="2178" width="163" height="199" fill="none" />
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect  className="BoundingBox" x="5644" y="2178" width="163" height="199" fill="none" />
     <path d="m5688 2302c22 46 71 67 117 54-5 3-10 6-16 9-51 25-109 4-134-47-24-51-4-109 47-133 6-3 12-5 17-7-39 28-52 79-31 124z"/>
     </g>
-    <g   class="com.sun.star.drawing.ClosedBezierShape">
-    <rect class="BoundingBox" x="5731" y="2156" width="162" height="200" fill="none"/>
+    <g   className="com.sun.star.drawing.ClosedBezierShape">
+    <rect className="BoundingBox" x="5731" y="2156" width="162" height="200" fill="none"/>
     <path 
           // ref={el => {main = el}} 
           // fill="none" stroke-width="37" stroke="#88CE02" strokeLinecap="round" 
@@ -276,39 +273,25 @@ export const PowerBtn = (props) => {
 
     </path>
     </g>
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect class="BoundingBox" x="5809" y="2351" width="119" height="201" fill="none"/>
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect className="BoundingBox" x="5809" y="2351" width="119" height="201" fill="none"/>
     <path d="m5891 2451c0-50-34-90-82-98 6-2 12-2 18-2 57 0 100 43 100 100s-43 100-100 100c-6 0-12 0-18-1 48-8 82-48 82-99z"/>
     </g>
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect class="BoundingBox" x="5800" y="2210" width="202" height="141" fill="none"/>
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect className="BoundingBox" x="5800" y="2210" width="202" height="141" fill="none"/>
     <path d="m5886 2248c-49 11-80 54-78 102-2-5-4-11-5-17-13-56 20-108 75-120 56-13 107 19 120 75l3 18c-19-44-66-69-115-58z"/>
     </g>
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect class="BoundingBox" x="5811" y="2295" width="191" height="179" fill="none"/>
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect className="BoundingBox" x="5811" y="2295" width="191" height="179" fill="none"/>
     <path d="m5939 2346c-39-31-92-30-128 3 3-5 6-11 10-16 36-44 97-51 141-15 45 35 51 96 16 140-4 5-8 10-13 14 24-43 14-94-26-126z"/>
     </g>
-    <g class="com.sun.star.drawing.ClosedBezierShape">
-    <rect class="BoundingBox" x="5657" y="2357" width="191" height="178" fill="none"/>
+    <g className="com.sun.star.drawing.ClosedBezierShape">
+    <rect className="BoundingBox" x="5657" y="2357" width="191" height="178" fill="none"/>
     <path d="m5785 2483c40-32 49-83 26-126 4 4 9 8 13 13 35 45 28 106-16 141s-105 29-141-16c-4-5-7-10-10-15 36 32 89 34 128 3z"/>
     </g>
     </g>
 
     </svg>
-{/* 
-    <span ref={el => {span = el}} style={{  
-                      backgroundColor: "green",
-                      width: "100%",
-                      height: "100%",
-                      display: "block",
-                      position: "absolute",
-                      top: "0",
-                      left: "-100px",
-                      zIndex: "-5",
-                  }}
-      >
-
-  </span> */}
     </div>
     
     )
@@ -455,6 +438,27 @@ fill={props.fill} stroke="none">
 197 265 338 481 405 132 41 348 47 500 14z"/>
 </g>
 </svg>
+    )
+  }
+
+
+  
+  export const Youtube= (props) => {
+    return(
+      
+    <svg 
+      width={props.width} height={props.height} viewBox="0 0 256.000000 256.000000"
+      preserveAspectRatio="xMidYMid meet">
+      <g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
+      fill="#000000" stroke="none">
+      <path d="M402 2176 c-178 -44 -333 -194 -386 -375 -24 -81 -24 -961 0 -1042
+      55 -186 219 -340 402 -378 74 -15 1650 -15 1724 0 183 38 347 192 402 378 24
+      81 24 961 0 1042 -55 186 -219 340 -402 378 -81 17 -1670 14 -1740 -3z m1264
+      -891 c15 -11 16 -16 7 -26 -7 -7 -171 -88 -364 -180 -270 -130 -355 -166 -366
+      -158 -18 15 -19 699 -1 717 9 9 94 -31 358 -164 191 -96 355 -181 366 -189z"/>
+      </g>
+    </svg>
+
     )
   }
 
