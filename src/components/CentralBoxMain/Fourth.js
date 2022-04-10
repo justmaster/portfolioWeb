@@ -6,6 +6,10 @@ import TwitterLogo  from '../../assets/Portfolio.media/twitter.png'
 import CryptoLogo  from '../../assets/Portfolio.media/spotify.png'
 import amazonQr from '../../assets/Portfolio.media/amazonQr.png'
 import octopus from '../../assets/Portfolio.media/octopus.PNG'
+import churchuli from '../../assets/Portfolio.media/churchuli.png'
+import peceast from '../../assets/Portfolio.media/peceast.png'
+
+
 
 
 import phone_svg from "../../assets/Portfolio.media/smartphone.svg"
@@ -163,14 +167,16 @@ const Fourth = ({ show, detailsHandle, expanded}) => {
 
                         {active === "web" ?
                         <WebBox>
-                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
-                                apptype={"Petro Energy Caspian"} appname={"Oil Refinery"} appscreen={octopus}/>
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://www.churchuli.com/"} 
+                            apptype={"Restaurant"} appname={"Commercial"} appscreen={churchuli}/>
 
-                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://pec-refinery.com/"} 
+                                apptype={"Petro Energy Caspian"} appname={"Oil Refinery"} appscreen={peceast}/>
+
+                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://octopusdev.netlify.app/"} 
                             apptype={"Octopus Project"} appname={"Design"} appscreen={octopus}/>
 
-                            <WebApp tool1={"React"} tool2={"JS"} tool3={"HTML"} tool4={"CSS"} link={"LINK"} href={"https://shazoo.ru"} 
-                            apptype={"Law Firm"} appname={"Commercial"} appscreen={octopus}/>
+
                         </WebBox>
                         : null}
 

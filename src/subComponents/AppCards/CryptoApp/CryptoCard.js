@@ -157,7 +157,7 @@ const CryptoCard = ({logo, svg, primary_color, secondary_color, detailsHandle, a
                   <div className="CR_titleContainer">
                     <div className="underline"></div>
                     <h2 className="title_text">Crypto Stalker</h2>
-                    <h2 className="title_text_bigger">Finance</h2>
+                    <h2 className="title_text_bigger">In development...</h2>
                   </div>
                   
                       

@@ -155,7 +155,7 @@ const TaxiCard = ({logo, svg, primary_color, secondary_color, detailsHandle, act
                   <div className="TX_titleContainer">
                     <div className="underline"></div>
                     <h2 className="title_text">Tbilisi Taxi</h2>
-                    <h2 className="title_text_bigger">Service</h2>
+                    <h2 className="title_text_bigger">In development...</h2>
                   </div>
                   
                       
